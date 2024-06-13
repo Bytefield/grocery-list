@@ -15,6 +15,7 @@ function App() {
                 <li>
                     <div className="container">
                         <input type="checkbox" name="" id="" />
+                        <p>Carrots</p>
                     </div>
                 </li>
             </ul>
