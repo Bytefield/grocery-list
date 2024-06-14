@@ -1,7 +1,27 @@
 import './App.css';
+import { Item } from './Item';
 import carrito from './assets/carrito.png';
+import { useState } from 'react';
 
 function App() {
+
+    const [inputValue, setInputValue] = useState("");
+    const [items, setItems] = useState([]);
+
+    function handleChangeInputValue(event) {
+        setInputValue(event.target.value);
+    }
+
+    function handleKeyDown(event) {
+        if (event.key === "Enter") {
+            setItems([...items, { value: inputValue }]);
+            setInputValue("");
+        }
+    }
+
+    function handleRemoveItem(index) {
+        setItems(items.filter((item, i) => i !== index));
+    }
 
     return (
         <main className='app'>
@@ -9,15 +29,23 @@ function App() {
             <div className="header">
                 <h1>Shopping List</h1>
                 <img src={carrito} alt="some img" />
-                <input type="text" placeholder="Add an item" />
+                <input
+                    type="text"
+                    placeholder="Add an item"
+                    className="item-input"
+                    value={inputValue}
+                    onChange={handleChangeInputValue}
+                    onKeyDown={handleKeyDown}
+                />
             </div>
             <ul>
-                <li>
-                    <div className="container">
-                        <input type="checkbox" name="" id="" />
-                        <p>Carrots</p>
-                    </div>
-                </li>
+                {items.map((item, index) => (
+                    <Item
+                        key={index}
+                        value={item.value}
+                        handleRemoveItem={() => handleRemoveItem(index)}
+                    />
+                ))}
             </ul>
         </main>
     )

@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: black;
 }
 
 input {
@@ -19,7 +20,8 @@ input {
   background-color: transparent;
   outline: none;
   padding: 5px 0;
-  border-bottom: 1 px solid rgba(74, 28, 28, 0.25);
+  border-bottom: 1px solid rgba(74, 28, 28, 0.25);
+  color: black;
 }
 
 .item-input {
@@ -47,7 +49,9 @@ li {
 
 li p {
   text-transform: capitalize;
-  font-size: 12px;
+  font-size: 15px;
+  color: black;
+  padding-left: 10px;
 }
 
 li p span {
