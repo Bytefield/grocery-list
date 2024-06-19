@@ -1,0 +1,60 @@
+{
+    "navigation": [
+        "get",
+        "title",
+        "current_url",
+        "back",
+        "forward",
+        "refresh"
+    ],
+    "window_management": [
+        "quit",
+        "close",
+        "get_window_position",
+        "get_window_size",
+        "set_window_position",
+        "set_window_size",
+        "maximize_window",
+        "fullscreen_window"
+    ],
+    "element_location": [
+        "find_element_by_id",
+        "find_element_by_name",
+        "find_element_by_xpath",
+        "find_element_by_link_text",
+        "find_element_by_partial_link_text",
+        "find_element_by_tag_name",
+        "find_element_by_class_name",
+        "find_element_by_css_selector",
+        "find_elements_by_name",
+        "find_elements_by_xpath",
+        "find_elements_by_link_text",
+        "find_elements_by_partial_link_text",
+        "find_elements_by_tag_name",
+        "find_elements_by_class_name",
+        "find_elements_by_css_selector"
+    ],
+    "script_execution": [
+        "execute_script",
+        "execute_async_script"
+    ],
+    "frame_switching": [
+        "switch_to_active_element",
+        "switch_to_window",
+        "switch_to_frame",
+        "switch_to_default_content",
+        "switch_to_alert"
+    ],
+    "screenshot": [
+        "get_screenshot_as_file",
+        "get_screenshot_as_png",
+        "get_screenshot_as_base64"
+    ],
+    "cookie_management": [
+        "get_cookies",
+        "get_cookie",
+        "delete_cookie",
+        "delete_all_cookies",
+        "add_cookie"
+    ]
+}
