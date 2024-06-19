@@ -1,55 +1,100 @@
-import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import { Item } from './Item';
-import carrito from './assets/carrito.png';
-import { useState } from 'react';
+import './styles/css/App.css';
 
 function App() {
-
-    const [inputValue, setInputValue] = useState("");
+    const [feature, setFeature] = useState('');
+    const [featureTags, setFeatureTags] = useState([]);
+    const [background, setBackground] = useState('');
+    const [scenario, setScenario] = useState('');
+    const [scenarioTags, setScenarioTags] = useState([]);
+    const [step, setStep] = useState('');
     const [items, setItems] = useState([]);
 
-    function handleChangeInputValue(event) {
-        setInputValue(event.target.value);
-    }
-
-    function handleKeyDown(event) {
-        if (event.key === "Enter") {
-            setItems([...items, { value: inputValue }]);
-            setInputValue("");
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            setItems(prevItems => [...prevItems, { feature, featureTags, background, scenario, scenarioTags, step }]);
+            setFeature('');
+            setFeatureTags([]);
+            setBackground('');
+            setScenario('');
+            setScenarioTags([]);
+            setStep('');
+            setDescription('');
         }
+    };
+
+    const handleChangeFeature = (event) => {
+        setFeature(event.target.value);
     }
 
-    function handleRemoveItem(index) {
-        setItems(items.filter((item, i) => i !== index));
+    const handleChangeFeatureTags = (event) => {
+        setFeatureTags(event.target.value.split(','));
+    }
+
+    const handleChangeBackground = (event) => {
+        setBackground(event.target.value);
+    }
+
+    const handleChangeScenario = (event) => {
+        setScenario(event.target.value);
+    }
+
+    const handleChangeScenarioTags = (event) => {
+        setScenarioTags(event.target.value.split(','));
+    }
+
+    const handleChangeStep = (event) => {
+        setStep(event.target.value);
+    }
+
+    const handleRemoveItem = (index) => {
+        setItems(prevItems => prevItems.filter((item, itemIndex) => itemIndex !== index));
+    }
+
+    const fetch_data = () => {
+        fetch('http://localhost:5000/api/data', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch((error) => console.error('Error:', error));
     }
 
     return (
-        <main className='app'>
-            <h4 className='success'>You are done</h4>
-            <div className="header">
-                <h1>Shopping List</h1>
-                <img src={carrito} alt="some img" />
-                <input
-                    type="text"
-                    placeholder="Add an item"
-                    className="item-input"
-                    value={inputValue}
-                    onChange={handleChangeInputValue}
-                    onKeyDown={handleKeyDown}
-                />
+        <main className="App">
+            <div className="input_bar">
+                <div className="feature">
+                    <input type="text" placeholder="Feature Tags" value={featureTags} onChange={handleChangeFeatureTags} />
+                    <input type="text" placeholder="Feature" value={feature} onChange={handleChangeFeature} />
+                </div>
+                <div className="scenario">
+                    <input type="text" placeholder="Scenario Tags" value={scenarioTags} onChange={handleChangeScenarioTags} />
+                    <input type="text" placeholder="Scenario description" value={scenario} onChange={handleChangeScenario} />
+                    <div className="step">
+                        <input type="text" placeholder="Step description" value={step} onChange={handleChangeStep} onKeyDown={handleKeyDown} />
+                    </div>
+                </div>
             </div>
+            <button onClick={fetch_data}>Fetch Data</button>
             <ul>
                 {items.map((item, index) => (
                     <Item
                         key={index}
-                        value={item.value}
+                        feature={item.feature}
+                        featureTags={item.featureTags}
+                        scenario={item.scenario}
+                        scenarioTags={item.scenarioTags}
+                        step={item.step}
                         handleRemoveItem={() => handleRemoveItem(index)}
                     />
                 ))}
             </ul>
         </main>
-    )
+    );
 }
 
-export default App
+export default App;

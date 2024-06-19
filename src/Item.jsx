@@ -1,16 +1,19 @@
-export function Item(props) {
+import React from 'react';
+
+export const Item = React.memo(({ feature, featureTags, background, scenario, scenarioTags, step, description, handleRemoveItem }) => {
     return (
-        <li>
-            <div className="container">
-                <input type="checkbox" name="" id="" />
-                <p>{props.value}</p>
+        <li className="list_item">
+            <div className="item_container">
+                <p className="name">Feature Tags: {featureTags.join(', ')}</p>
+                <p className="name">Feature: {feature}</p>
+                <p className="name">Background: {background}</p>
+                <p className="name">Scenario Tags: {scenarioTags.join(', ')}</p>
+                <p className="name">Scenario: {scenario}</p>
+                <p className="name">Step: {step}</p>
             </div>
-            <div>
-                <button
-                    type="button"
-                    onClick={props.handleRemoveItem}
-                >Button</button>
+            <div className="button-bar">
+                <button type="button" onClick={handleRemoveItem}>Delete</button>
             </div>
         </li>
     );
-}
+});
