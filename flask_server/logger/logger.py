@@ -3,30 +3,49 @@ import sys
 
 class Logger:
     """A simple logger class that logs messages"""
-    def __init__(self, name, log_file='app.log', level=logging.INFO):
-        self.logger = logging.getLogger(name)
-        self.logger.setLevel(level)
+    def __init__(self, log_file='app.log', level='INFO'):
+        self.logger = logging.getLogger(__name__)
+        self.logger.setLevel(self.get_log_level(level))
 
         # Create a file handler
-        handler = logging.FileHandler(log_file)
-        handler.setLevel(level)
+        file_handler = logging.FileHandler(log_file)
+        file_handler.setLevel(self.get_log_level(level))
+
+        # Create a console handler
+        console_handler = logging.StreamHandler()
+        console_handler.setLevel(self.get_log_level(level))
 
         # Create a logging format
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        handler.setFormatter(formatter)
+        file_handler.setFormatter(formatter)
+        console_handler.setFormatter(formatter)
 
         # Add the handlers to the logger
-        self.logger.addHandler(handler)
+        self.logger.addHandler(file_handler)
+        self.logger.addHandler(console_handler)
 
-    def log(self, message, level=logging.INFO):
-        if level == logging.CRITICAL:
-            self.logger.critical(message)
-            sys.exit(1)
-        elif level == logging.ERROR:
-            self.logger.error(message)
-        elif level == logging.WARNING:
-            self.logger.warning(message)
-        elif level == logging.INFO:
-            self.logger.info(message)
-        else:
-            self.logger.debug(message)
+    def get_log_level(self, level):
+        levels = {
+            'CRITICAL': logging.CRITICAL,
+            'ERROR': logging.ERROR,
+            'WARNING': logging.WARNING,
+            'INFO': logging.INFO,
+            'DEBUG': logging.DEBUG
+        }
+        return levels.get(level.upper(), logging.INFO)
+
+    def critical(self, message):
+        self.logger.critical(message)
+        sys.exit(1)
+
+    def error(self, message):
+        self.logger.error(message)
+
+    def warning(self, message):
+        self.logger.warning(message)
+
+    def info(self, message):
+        self.logger.info(message)
+
+    def debug(self, message):
+        self.logger.debug(message)

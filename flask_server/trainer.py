@@ -1,10 +1,21 @@
 import json
+import os
+import torch
+from logger import Logger
 from sklearn.model_selection import train_test_split
 from transformers import BertTokenizerFast, BertForSequenceClassification, Trainer, TrainingArguments
-import torch
+
+# Create a logger instance
+logger = Logger(log_file='training.log', level='INFO')
+
+# Define file paths
+label_mappings_path: str = 'label_mappings.json'
+selenium_actions_path: str = 'selenium_actions.json'
 
 # Load data
-with open('selenium_actions.json', 'r') as f:
+if not os.path.isfile(selenium_actions_path):
+    logger.critical('Path to selenium_actions.json not found. Exiting...')
+with open(selenium_actions_path, 'r') as f:
     data = json.load(f)
 
 # Prepare data
@@ -29,9 +40,14 @@ val_encodings = tokenizer(val_texts, truncation=True, padding=True)
 label_to_id = {v: i for i, v in enumerate(sorted(set(labels)))}
 train_labels = [label_to_id[label] for label in train_labels]
 val_labels = [label_to_id[label] for label in val_labels]
+
+# map ids to original actions
 id_to_label = {i: v for v, i in label_to_id.items()}
 
 # Save the mappings to a JSON file
+if not os.path.isfile(label_mappings_path):
+    logger.info('Path to label_mappings.json not found. Creating a new file.')
+
 with open('label_mappings.json', 'w') as f:
     json.dump({'label_to_id': label_to_id, 'id_to_label': id_to_label}, f)
 
