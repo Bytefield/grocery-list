@@ -1,60 +1,377 @@
 {
-    "navigation": [
-        "get",
-        "title",
-        "current_url",
-        "back",
-        "forward",
-        "refresh"
-    ],
-    "window_management": [
-        "quit",
-        "close",
-        "get_window_position",
-        "get_window_size",
-        "set_window_position",
-        "set_window_size",
-        "maximize_window",
-        "fullscreen_window"
-    ],
-    "element_location": [
-        "find_element_by_id",
-        "find_element_by_name",
-        "find_element_by_xpath",
-        "find_element_by_link_text",
-        "find_element_by_partial_link_text",
-        "find_element_by_tag_name",
-        "find_element_by_class_name",
-        "find_element_by_css_selector",
-        "find_elements_by_name",
-        "find_elements_by_xpath",
-        "find_elements_by_link_text",
-        "find_elements_by_partial_link_text",
-        "find_elements_by_tag_name",
-        "find_elements_by_class_name",
-        "find_elements_by_css_selector"
-    ],
-    "script_execution": [
-        "execute_script",
-        "execute_async_script"
-    ],
-    "frame_switching": [
-        "switch_to_active_element",
-        "switch_to_window",
-        "switch_to_frame",
-        "switch_to_default_content",
-        "switch_to_alert"
-    ],
-    "screenshot": [
-        "get_screenshot_as_file",
-        "get_screenshot_as_png",
-        "get_screenshot_as_base64"
-    ],
-    "cookie_management": [
-        "get_cookies",
-        "get_cookie",
-        "delete_cookie",
-        "delete_all_cookies",
-        "add_cookie"
-    ]
+    "back": {
+        "descriptions": [
+            "Navigate back",
+            "Go back to the previous page",
+            "Load the previous page"
+        ],
+        "parameters": {
+            "required": [],
+            "optional": []
+        }
+    },
+    "close": {
+        "descriptions": [
+            "Close the current window",
+            "Exit the current window",
+            "Quit the current window"
+        ],
+        "parameters": {
+            "required": [],
+            "optional": []
+        }
+    },
+    "current_url": {
+        "descriptions": [
+            "Get the current URL",
+            "Retrieve the current URL",
+            "What's the current URL?"
+        ],
+        "parameters": {
+            "required": [],
+            "optional": []
+        }
+    },
+    "execute_async_script": {
+        "descriptions": [
+            "Execute an asynchronous JavaScript script",
+            "Run an asynchronous JavaScript script",
+            "Perform an asynchronous JavaScript script"
+        ],
+        "parameters": {
+            "required": [
+                "script"
+            ],
+            "optional": [
+                "*args"
+            ]
+        }
+    },
+    "execute_script": {
+        "descriptions": [
+            "Execute a JavaScript script",
+            "Run a JavaScript script",
+            "Perform a JavaScript script"
+        ],
+        "parameters": {
+            "required": [
+                "script"
+            ],
+            "optional": [
+                "*args"
+            ]
+        }
+    },
+    "find_element_by_class_name": {
+        "descriptions": [
+            "Find an element by its class name",
+            "Locate an element using its class name",
+            "Search for an element by its class name"
+        ],
+        "parameters": {
+            "required": [
+                "name"
+            ],
+            "optional": []
+        }
+    },
+    "find_element_by_css_selector": {
+        "descriptions": [
+            "Find an element by its CSS selector",
+            "Locate an element using its CSS selector",
+            "Search for an element by its CSS selector"
+        ],
+        "parameters": {
+            "required": [
+                "css_selector"
+            ],
+            "optional": []
+        }
+    },
+    "find_element_by_id": {
+        "descriptions": [
+            "Find an element by its ID",
+            "Locate an element using its ID",
+            "Search for an element by its ID"
+        ],
+        "parameters": {
+            "required": [
+                "id_"
+            ],
+            "optional": []
+        }
+    },
+    "find_element_by_link_text": {
+        "descriptions": [
+            "Find a link by its text",
+            "Locate a link using its text",
+            "Search for a link by its text"
+        ],
+        "parameters": {
+            "required": [
+                "link_text"
+            ],
+            "optional": []
+        }
+    },
+    "find_element_by_name": {
+        "descriptions": [
+            "Find an element by its name",
+            "Locate an element using its name",
+            "Search for an element by its name"
+        ],
+        "parameters": {
+            "required": [
+                "name"
+            ],
+            "optional": []
+        }
+    },
+    "find_element_by_xpath": {
+        "descriptions": [
+            "Find an element by its XPath",
+            "Locate an element using its XPath",
+            "Search for an element by its XPath"
+        ],
+        "parameters": {
+            "required": [
+                "xpath"
+            ],
+            "optional": []
+        }
+    },
+    "forward": {
+        "descriptions": [
+            "Navigate forward",
+            "Go forward to the next page",
+            "Load the next page"
+        ],
+        "parameters": {
+            "required": [],
+            "optional": []
+        }
+    },
+    "get": {
+        "descriptions": [
+            "Navigate to a URL",
+            "Go to a specific URL",
+            "Load a web page"
+        ],
+        "parameters": {
+            "required": [
+                "url"
+            ],
+            "optional": []
+        }
+    },
+    "get_window_position": {
+        "descriptions": [
+            "Get the position of the current window",
+            "Retrieve the position of the current window",
+            "What's the position of the current window?"
+        ],
+        "parameters": {
+            "required": [],
+            "optional": []
+        }
+    },
+    "get_page_source": {
+        "descriptions": [
+            "Get the source of the current page",
+            "Retrieve the source of the current page",
+            "What's the source of the current page?"
+        ],
+        "parameters": {
+            "required": [],
+            "optional": []
+        }
+    },
+    "get_screenshot_as_base64": {
+        "descriptions": [
+            "Get a screenshot and save it as a Base64 string",
+            "Take a screenshot and store it as a Base64 string",
+            "Capture a screenshot and save it as a Base64 string"
+        ],
+        "parameters": {
+            "required": [],
+            "optional": []
+        }
+    },
+    "get_screenshot_as_png": {
+        "descriptions": [
+            "Get a screenshot and save it as a PNG",
+            "Take a screenshot and store it as a PNG",
+            "Capture a screenshot and save it as a PNG"
+        ],
+        "parameters": {
+            "required": [],
+            "optional": []
+        }
+    },
+    "get_screenshot_as_file": {
+        "descriptions": [
+            "Get a screenshot and save it as a file",
+            "Take a screenshot and store it as a file",
+            "Capture a screenshot and save it as a file"
+        ],
+        "parameters": {
+            "required": [
+                "filename"
+            ],
+            "optional": []
+        }
+    },
+    "get_window_size": {
+        "descriptions": [
+            "Get the size of the current window",
+            "Retrieve the size of the current window",
+            "What's the size of the current window?"
+        ],
+        "parameters": {
+            "required": [],
+            "optional": []
+        }
+    },
+    "get_window_handle": {
+        "descriptions": [
+            "Get the handle of the current window",
+            "Retrieve the handle of the current window",
+            "What's the handle of the current window?"
+        ],
+        "parameters": {
+            "required": [],
+            "optional": []
+        }
+    },
+    "get_window_handles": {
+        "descriptions": [
+            "Get the handles of all windows",
+            "Retrieve the handles of all windows",
+            "What are the handles of all windows?"
+        ],
+        "parameters": {
+            "required": [],
+            "optional": []
+        }
+    },
+    "maximize_window": {
+        "descriptions": [
+            "Maximize the current window",
+            "Enlarge the current window to its maximum size",
+            "Make the current window as large as possible"
+        ],
+        "parameters": {
+            "required": [],
+            "optional": []
+        }
+    },
+    "refresh": {
+        "descriptions": [
+            "Refresh the page",
+            "Reload the page",
+            "Load the page again"
+        ],
+        "parameters": {
+            "required": [],
+            "optional": []
+        }
+    },
+    "set_window_position": {
+        "descriptions": [
+            "Set the position of the current window",
+            "Move the current window to a specific position",
+            "Change the position of the current window"
+        ],
+        "parameters": {
+            "required": [
+                "x",
+                "y"
+            ],
+            "optional": []
+        }
+    },
+    "set_window_size": {
+        "descriptions": [
+            "Set the size of the current window",
+            "Resize the current window",
+            "Change the size of the current window"
+        ],
+        "parameters": {
+            "required": [
+                "width",
+                "height"
+            ],
+            "optional": []
+        }
+    },
+    "switch_to_alert": {
+        "descriptions": [
+            "Switch to the alert",
+            "Focus on the alert",
+            "Move to the alert"
+        ],
+        "parameters": {
+            "required": [],
+            "optional": []
+        }
+    },
+    "switch_to_default_content": {
+        "descriptions": [
+            "Switch to the default content",
+            "Focus on the default content",
+            "Move to the default content"
+        ],
+        "parameters": {
+            "required": [],
+            "optional": []
+        }
+    },
+    "switch_to_frame": {
+        "descriptions": [
+            "Switch to a different frame",
+            "Focus on a different frame",
+            "Move to a different frame"
+        ],
+        "parameters": {
+            "required": [
+                "frame_reference"
+            ],
+            "optional": []
+        }
+    },
+    "switch_to_window": {
+        "descriptions": [
+            "Switch to a different window",
+            "Focus on a different window",
+            "Move to a different window"
+        ],
+        "parameters": {
+            "required": [
+                "window_name"
+            ],
+            "optional": []
+        }
+    },
+    "switch_to_active_element": {
+        "descriptions": [
+            "Switch to the active element",
+            "Focus on the active element",
+            "Move to the active element"
+        ],
+        "parameters": {
+            "required": [],
+            "optional": []
+        }
+    },
+    "title": {
+        "descriptions": [
+            "Get the title of the current page",
+            "Retrieve the page title",
+            "What's the title of the page?"
+        ],
+        "parameters": {
+            "required": [],
+            "optional": []
+        }
+    }
 }
