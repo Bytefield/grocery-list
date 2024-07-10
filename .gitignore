@@ -2,3 +2,6 @@ flask_server/venv
 flask_server/model
 react_front/node_modules
 flask_server/results
+training.log
+app.log
+flask_server/testing_model.log
